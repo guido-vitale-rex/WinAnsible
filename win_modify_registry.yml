@@ -1,0 +1,13 @@
+---
+- name: Modify registry entries
+  hosts: all
+  tasks:
+  - name: Customize Registry entries
+    win_regedit:
+      key: HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU
+      value: "{{ item.val }}"
+      data: "{{ item.data }}"
+      datatype: dword
+    loop:
+      - { val: NoAutoUpdate, data: 00000001 }
+      - { val: NoAutoRebootWithLoggedOnUsers, data: 00000001 }
