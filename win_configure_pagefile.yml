@@ -1,0 +1,21 @@
+---
+- name: Configure Page file
+  hosts: all
+  vars:
+    pagefile_max_size: 8192
+    pagefile_min_size: 8192
+  tasks:
+  - name: set the page file to have a min of {{ pagefile_min_size }} and max of {{ pagefile_max_size }}
+    win_pagefile:
+      drive: C
+      initial_size: "{{ pagefile_min_size }}"
+      maximum_size: "{{ pagefile_max_size }}"
+      override: yes
+      state: present
+    notify: reboot_server
+
+  handlers:
+  - name: reboot_server
+    win_reboot:
+      reboot_timeout: 3600
+      
