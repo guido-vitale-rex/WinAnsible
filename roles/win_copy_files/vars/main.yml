@@ -1,0 +1,4 @@
+---
+# vars file for win_copy_files
+file_name: user.png
+file_location: C:\ProgramData\Microsoft\User Account Pictures

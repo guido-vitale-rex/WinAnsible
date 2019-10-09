@@ -1,0 +1,5 @@
+---
+- name: Copy Custom files to remote machine
+  hosts: all
+  roles:
+  - win_copy_files    

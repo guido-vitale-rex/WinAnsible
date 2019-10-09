@@ -1,0 +1,12 @@
+---
+# tasks file for win_copy_files
+- name: make sure that the {{ file_location }} directory exists
+  win_file:
+    path: "{{ file_location }}"
+    state: directory
+  
+- name: copy {{ file_name }} user file under {{ file_location }}
+  win_copy:
+    src: "{{ file_name }}"
+    dest: "{{ file_location }}\{{ file_name }}"
+      
