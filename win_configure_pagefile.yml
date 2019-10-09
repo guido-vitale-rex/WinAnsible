@@ -1,6 +1,7 @@
 ---
 - name: Configure Page file
   hosts: all
+  gather_facts: false
   vars:
     pagefile_max_size: 8192
     pagefile_min_size: 8192
@@ -10,7 +11,7 @@
       drive: C
       initial_size: "{{ pagefile_min_size }}"
       maximum_size: "{{ pagefile_max_size }}"
-      override: yes
+      override: false
       state: present
     notify: reboot_server
 
