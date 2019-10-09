@@ -1,0 +1,12 @@
+---
+- name: Disable Windows Firewall
+  hosts: all
+  tasks:
+  - name: disable windows firewall
+    win_firewall:
+      state: disabled
+      profiles:
+      - Domain
+      - Private
+      - Public
+    
