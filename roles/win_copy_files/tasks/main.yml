@@ -8,5 +8,5 @@
 - name: copy {{ file_name }} user file under {{ file_location }}
   win_copy:
     src: "{{ file_name }}"
-    dest: "{{ file_location }}\{{ file_name }}"
+    dest: "{{ file_location }}\\{{ file_name }}"
       
