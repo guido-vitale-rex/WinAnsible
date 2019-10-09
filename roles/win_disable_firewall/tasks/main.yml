@@ -1,0 +1,9 @@
+---
+# tasks file for win_disable_firewall
+- name: disable windows firewall
+  win_firewall:
+    state: disabled
+    profiles:
+    - Domain
+    - Private
+    - Public

@@ -1,0 +1,5 @@
+---
+- name: Disable Windows Firewall
+  hosts: all
+  roles:
+  - win_disable_firewall
