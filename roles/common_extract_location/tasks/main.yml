@@ -7,8 +7,8 @@
 
 - name: Spliting hostname and extracting detect portion
   set_fact:
-  # https://docs.ansible.com/ansible/latest/user_guide/playbooks_filters.html
-  extracted_location: "{{ inventory_hostname.split('.')[0] | upper }}"
+    # https://docs.ansible.com/ansible/latest/user_guide/playbooks_filters.html
+    extracted_location: "{{ inventory_hostname.split('.')[0] | upper }}"
 
 - name: Printing Extracted location
   debug:
