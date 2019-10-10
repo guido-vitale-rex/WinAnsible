@@ -16,12 +16,18 @@
       name: "{{ features_to_add }}"
       state: present
     register: add_result
+  
+  - name: display results from add
+    debug: add_result
 
   - name: Remove Windows Features
     win_feature:
       name: "{{ features_to_remove }}"
       state: absent
     register: remove_result 
+
+  - name: display results from remove
+    debug: remove_result
 
   - name: reboot if required
     debug: msg="reboot required value is {{ add_result.reboot_required }} and {{ remove_result.reboot_required }}" 
