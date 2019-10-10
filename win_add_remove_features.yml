@@ -5,7 +5,7 @@
   vars:
     features_to_add:
       - RSAT-AD-Tools
-    fetures_to_remove:
+    features_to_remove:
       - FS-SMB1
       - DHCP
   tasks:
