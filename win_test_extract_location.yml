@@ -1,0 +1,5 @@
+---
+- name: Extract location from hostname and use this location
+  hosts: all
+  roles:
+  - common_extract_location    
