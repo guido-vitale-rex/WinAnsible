@@ -5,6 +5,8 @@
   vars:
     features_to_add:
       - RSAT-AD-Tools
+      - Web-Server
+      - Web-Common-Http
     features_to_remove:
       - FS-SMB1
       - DHCP
