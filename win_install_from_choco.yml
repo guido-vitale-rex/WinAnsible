@@ -1,0 +1,13 @@
+---
+- name: install packages from choco
+  hosts: all
+  vars:
+    choco_packages:
+      - notepadplusplus
+      - git
+  tasks:
+    - name: Install choco packages
+      win_chocolatey:
+        name: "{{ item }}"
+        state: present
+      loop: "{{ choco_packages }}"
