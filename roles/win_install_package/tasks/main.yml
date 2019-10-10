@@ -1,2 +1,16 @@
 ---
 # tasks file for win_install_package
+- name: Create directory for installers
+  win_file:
+    path: "{{ Installer_Location }}"
+    state: directory
+
+- name: Download {{ Installer_Name }} file to {{ inventory_hostname }}
+  win_get_url:
+    url: "{{ Installer_Url }}"
+    dest: "{{ Installer_Location }}\\{{ Installer_Name }}"
+
+- name: Install package
+  win_package:
+    path: "{{ Installer_Location }}\\{{ Installer_Name }}"
+    arguments: "{{ Installer_Parameters }}"
