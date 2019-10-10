@@ -1,5 +1,4 @@
 ---
-# tasks file for win_install_package
 - name: Create directory for installers
   win_file:
     path: "{{ Installer_Location }}"
@@ -14,3 +13,8 @@
   win_package:
     path: "{{ Installer_Location }}\\{{ Installer_Name }}"
     arguments: "{{ Installer_Parameters }}"
+
+- name: Copying config file
+  win_template:
+    src: install.cfg.j2
+    dest: "{{ Installer_Location }}\\install.cfg"
