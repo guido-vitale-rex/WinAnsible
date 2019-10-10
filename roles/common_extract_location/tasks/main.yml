@@ -1,2 +1,15 @@
 ---
 # tasks file for common_extract_location
+- name: Split hostname
+  debug:
+  # https://docs.ansible.com/ansible/latest/reference_appendices/special_variables.html
+    var: inventory_hostname #ansible magic variable which has the hostname of your current target taken from the inventory
+
+- name: Spliting hostname and extracting detect portion
+  set_fact:
+  # https://docs.ansible.com/ansible/latest/user_guide/playbooks_filters.html
+  extracted_location: "{{ inventory_hostname.split('.')[0] | upper }}"
+
+- name: Printing Extracted location
+  debug:
+    var: extracted_location
