@@ -1,0 +1,15 @@
+---
+- name: Services Management
+  hosts: all
+  gather_facts: false
+  tasks:
+  - name: Set BITS service to autostart
+    win_services:
+      name: BITS
+      state: started
+      start_mode: auto
+  - name: Set PhoneSvc service to disabled
+    win_services:
+      name: PhoneSvc
+      state: stopped
+      start_mode: disabled
