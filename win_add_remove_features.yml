@@ -1,0 +1,32 @@
+---
+- name: Adding and removing windows features
+  hosts: all
+  gather_facts: false
+  vars:
+    features_to_add:
+      - RSAT-AD-Tools
+    fetures_to_remove:
+      - FS-SMB1
+      - DHCP
+  tasks:
+  - name: Add Windows Features
+    win_feature:
+      name: "{{ features_to_add }}"
+      state: present
+    register: add_result
+
+  - name: Remove Windows Features
+    win_feature:
+      name: "{{ features_to_remove }}"
+      state: absent
+    register: remove_result 
+
+  - name: reboot if required
+    debug: msg="reboot required value is {{ add_result.reboot_required }} and {{ remove_result.reboot_required }}" 
+    changed_when: add_result.reboot_required or remove_result.reboot_required
+    notify: reboot_server
+
+  handlers:
+  - name: reboot_server
+    win_reboot:
+      reboot_timeout: 3600
