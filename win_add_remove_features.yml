@@ -18,7 +18,8 @@
     register: add_result
   
   - name: display results from add
-    debug: add_result
+    debug: 
+      var: add_result
 
   - name: Remove Windows Features
     win_feature:
@@ -27,7 +28,8 @@
     register: remove_result 
 
   - name: display results from remove
-    debug: remove_result
+    debug: 
+      var: remove_result
 
   - name: reboot if required
     debug: msg="reboot required value is {{ add_result.reboot_required }} and {{ remove_result.reboot_required }}" 
