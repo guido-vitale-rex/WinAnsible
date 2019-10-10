@@ -1,0 +1,6 @@
+---
+- name: Extract location from hostname and install package
+  hosts: all
+  roles:
+  - common_extract_location 
+  - win_install_package   
